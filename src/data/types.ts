@@ -5,6 +5,9 @@ export interface ProductLine {
   description: string
   quantity: string
   rate: string
+  result: string
+  unit: string
+  
 }
 
 export const TProductLine = z.object({
@@ -34,6 +37,9 @@ export const TInvoice = z.object({
   invoiceDueDateLabel: z.string(),
   invoiceDueDate: z.string(),
   productLineDescription: z.string(),
+  result: z.string(),
+  unit: z.string(),
+  banner: z.string(),
   productLineQuantity: z.string(),
   productLineQuantityRate: z.string(),
   productLineQuantityAmount: z.string(),

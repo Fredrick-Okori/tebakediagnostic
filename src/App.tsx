@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="center fs-30">Laboratory Report Generator</h1>
+      <h2 className="center fs-30">Tebake Diagnostic Centre - Reporting</h2>
       <InvoicePage data={data} onChange={onInvoiceUpdated} />
     </div>
   )

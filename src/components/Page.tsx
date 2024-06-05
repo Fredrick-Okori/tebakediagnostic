@@ -10,6 +10,7 @@ interface Props {
 const Page: FC<PropsWithChildren<Props>> = ({ className, pdfMode, children }) => {
   return (
     <>
+      
       {pdfMode ? (
         <PdfPage size="A4" style={compose('page ' + (className ? className : ''))}>
           {children}
