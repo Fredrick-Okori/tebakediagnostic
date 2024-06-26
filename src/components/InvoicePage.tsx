@@ -14,14 +14,18 @@ import Text from './Text'
 import { Font } from '@react-pdf/renderer'
 import Download from './DownloadPDF'
 import { format } from 'date-fns/format'
-import { Value } from 'sass'
+import { Image } from '@chakra-ui/react'
+
+
+
+// import { Value } from 'sass'
 
 Font.register({
-  family: 'Nunito',
+  family: 'Poppins',
   fonts: [
-    { src: 'https://fonts.gstatic.com/s/nunito/v12/XRXV3I6Li01BKofINeaE.ttf' },
+    { src: 'https://fonts.gstatic.com/s/poppins/v12/XRXV3I6Li01BKofINeaE.ttf' },
     {
-      src: 'https://fonts.gstatic.com/s/nunito/v12/XRXW3I6Li01BKofA6sKUYevN.ttf',
+      src: 'https://fonts.gstatic.com/s/poppins/v12/XRXW3I6Li01BKofA6sKUYevN.ttf',
       fontWeight: 600,
     },
   ],
@@ -176,23 +180,25 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               onChangeWidth={(value) => handleChange('logoWidth', value)}
             />
           </View>
-          <View className="w-50" pdfMode={pdfMode}>
-            <EditableInput
-              className="fs-17 right bold"
-              placeholder="Lab Report"
-              value={invoice.title}
-              onChange={(value) => handleChange('title', value)}
+          <View className='w-50' pdfMode={pdfMode}>
+       
+            <EditableFileImage
+              className="logo"
+              value={invoice.arabic}
+              width={invoice.arabicwidth}
               pdfMode={pdfMode}
+              onChangeImage={(value) => handleChange('arabic', value)}
+              onChangeWidth={(value) => handleChange('arabicwidth', value)}
             />
           </View>
         </View>
-        
+
         <View className="w-100 bg-dark center" pdfMode={pdfMode}>
-         
-         
+
+
           <EditableInput
             className="fs-15 white center bold"
-           
+
             placeholder='LABORATORY DEPARTMENT'
             value={invoice.banner}
             onChange={(value) => handleChange('banner', value)}

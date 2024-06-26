@@ -1,5 +1,5 @@
 const countryList = [
-  {value: 'Uganda', text: 'Uganda'},
+  { value: 'Uganda', text: 'Kampala, Uganda' },
   { value: 'Bangladesh', text: 'Bangladesh' },
   { value: 'Belgium', text: 'Belgium' },
   { value: 'Burkina Faso', text: 'Burkina Faso' },

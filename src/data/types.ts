@@ -7,7 +7,7 @@ export interface ProductLine {
   rate: string
   result: string
   unit: string
-  
+
 }
 
 export const TProductLine = z.object({
@@ -19,6 +19,10 @@ export const TProductLine = z.object({
 export const TInvoice = z.object({
   logo: z.string(),
   logoWidth: z.number(),
+  arabic: z.string(),
+  arabicwidth: z.number(),
+  sloganarabic: z.string(),
+  sloganarabicwidth: z.string(),
   title: z.string(),
   companyName: z.string(),
   name: z.string(),
