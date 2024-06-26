@@ -94,19 +94,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   //   return amount.toFixed(2)
   // }
 
-  useEffect(() => {
-    let subTotal = 0
-
-    invoice.productLines.forEach((productLine) => {
-      const quantityNumber = parseFloat(productLine.quantity)
-      const rateNumber = parseFloat(productLine.rate)
-      const amount = quantityNumber && rateNumber ? quantityNumber * rateNumber : 0
-
-      subTotal += amount
-    })
-
-    setSubTotal(subTotal)
-  }, [invoice.productLines])
+ 
 
  
 
