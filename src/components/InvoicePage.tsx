@@ -14,7 +14,7 @@ import Text from './Text'
 import { Font } from '@react-pdf/renderer'
 import Download from './DownloadPDF'
 import { format } from 'date-fns/format'
-import { Image } from '@chakra-ui/react'
+
 
 
 
@@ -40,7 +40,7 @@ interface Props {
 const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   const [invoice, setInvoice] = useState<Invoice>(data ? { ...data } : { ...initialInvoice })
   const [subTotal, setSubTotal] = useState<number>()
-  const [saleTax, setSaleTax] = useState<number>()
+
 
   const dateFormat = 'MMM dd, yyyy'
   const invoiceDate = invoice.invoiceDate !== '' ? new Date(invoice.invoiceDate) : new Date()
@@ -54,36 +54,25 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   }
 
   const handleChange = (name: keyof Invoice, value: string | number) => {
-    if (name !== 'productLines') {
-      const newInvoice = { ...invoice }
+    const newInvoice = { ...invoice, [name]: value };
+    setInvoice(newInvoice);
+  };
 
-      if (name === 'logoWidth' && typeof value === 'number') {
-        newInvoice[name] = value
-      } else if (name !== 'logoWidth' && typeof value === 'string') {
-        newInvoice[name] = value
-      }
-
-      setInvoice(newInvoice)
-    }
-  }
 
   const handleProductLineChange = (index: number, name: keyof ProductLine, value: string) => {
     const productLines = invoice.productLines.map((productLine, i) => {
       if (i === index) {
-        const newProductLine = { ...productLine }
-
-        if (name === 'description' || name === 'result' || name === 'unit') {
-          newProductLine[name] = value
-        }
-
-        return newProductLine
+     
+        const newProductLine = { ...productLine };
+        (newProductLine as ProductLine)[name] = value; // This should now work correctly
+        return newProductLine;
       }
+      return productLine;
+    });
 
-      return { ...productLine }
-    })
+    setInvoice({ ...invoice, productLines });
+  };
 
-    setInvoice({ ...invoice, productLines })
-  }
 
   const handleRemove = (i: number) => {
     const productLines = invoice.productLines.filter((_, index) => index !== i)
@@ -119,13 +108,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
     setSubTotal(subTotal)
   }, [invoice.productLines])
 
-  useEffect(() => {
-    const match = invoice.taxLabel.match(/(\d+)%/)
-    const taxRate = match ? parseFloat(match[1]) : 0
-    const saleTax = subTotal ? (subTotal * taxRate) / 100 : 0
-
-    setSaleTax(saleTax)
-  }, [subTotal, invoice.taxLabel])
+ 
 
   useEffect(() => {
     if (onChange) {
@@ -181,7 +164,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
             />
           </View>
           <View className='w-50' pdfMode={pdfMode}>
-       
+
             <EditableFileImage
               className="logo"
               value={invoice.arabic}

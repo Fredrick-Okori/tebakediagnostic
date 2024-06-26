@@ -2,11 +2,11 @@ import { CSSProperties } from 'react'
 import { z, TypeOf } from 'zod'
 
 export interface ProductLine {
-  description: string
-  quantity: string
-  rate: string
-  result: string
-  unit: string
+  description: string;
+  result: string;
+  unit: string;
+  quantity: string;
+  rate: string;
 
 }
 
@@ -14,6 +14,8 @@ export const TProductLine = z.object({
   description: z.string(),
   quantity: z.string(),
   rate: z.string(),
+  result: z.string(),
+  unit: z.string(),
 })
 
 export const TInvoice = z.object({

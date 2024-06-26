@@ -4,6 +4,8 @@ export const initialProductLine: ProductLine = {
   description: '',
   quantity: '1',
   rate: '0.00',
+  result: '',
+  unit: '',
 }
 
 export const initialInvoice: Invoice = {
@@ -30,15 +32,6 @@ export const initialInvoice: Invoice = {
   productLineQuantity: 'Qty',
   productLineQuantityRate: 'Rate',
   productLineQuantityAmount: 'Amount',
-  productLines: [
-    {
-      description: 'Pink ballons',
-      quantity: '2',
-      rate: '100.00',
-    },
-    { ...initialProductLine },
-    { ...initialProductLine },
-  ],
   subTotalLabel: 'Sub Total',
   taxLabel: 'Sale Tax (10%)',
   totalLabel: 'TOTAL',
@@ -47,4 +40,12 @@ export const initialInvoice: Invoice = {
   notes: 'Account Details: 0775281189 | Account Name: Niwakora Africano Eric',
   termLabel: 'Terms & Conditions',
   term: '',
+  arabic: '',
+  arabicwidth: 0,
+  sloganarabic: '',
+  sloganarabicwidth: '',
+  result: '',
+  unit: '',
+  banner: '',
+  productLines: [],
 }
