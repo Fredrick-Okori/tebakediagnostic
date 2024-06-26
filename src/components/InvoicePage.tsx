@@ -39,7 +39,7 @@ interface Props {
 
 const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   const [invoice, setInvoice] = useState<Invoice>(data ? { ...data } : { ...initialInvoice })
-  const [subTotal, setSubTotal] = useState<number>()
+ 
 
 
   const dateFormat = 'MMM dd, yyyy'
