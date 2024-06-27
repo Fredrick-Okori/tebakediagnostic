@@ -46,6 +46,7 @@ const Download: FC<Props> = ({ data, setData }) => {
   const title = data.invoiceTitle ? data.invoiceTitle.toLowerCase() : 'invoice'
   return (
     <div className={'download-pdf '}>
+      <h2>Print</h2>
       <PDFDownloadLink
         key="pdf"
         document={<InvoicePage pdfMode={true} data={debounced} />}
